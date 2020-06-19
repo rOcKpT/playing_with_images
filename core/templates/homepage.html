@@ -1,0 +1,23 @@
+{% extends "header.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>Your Galleries</h2>
+    <ul>
+        {% for o_gal in owned %}
+            <li><a href="#">{{o_gal.title}}</a></li>
+        {% empty %}
+            <li>{% trans "No galleries created" %}</li>
+        {% endfor %}
+    </ul>
+
+
+    <h2>Shared Galleries</h2>
+    <ul>
+        {% for s_gal in shared %}
+            <li><a href="#">{s_gal.title}</a></li>
+        {% empty %}
+            <li>{% trans "No galleries shared with you" %}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
