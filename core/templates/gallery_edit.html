@@ -1,0 +1,13 @@
+{% extends "header.html" %}
+{% load i18n static %}
+
+{% block content %}
+{#    Style added just to show the checkbox to select the shared users, imcompatiblity with materialize#}
+
+    <div class="container">
+        <h2>{% trans "Editing Gallery" %} {{ object.title }}</h2>
+        {% include "gallery_form.html" %}
+    </div>
+
+    {#        {% include "gallery_manual_form.html" %}#}
+{% endblock %}

@@ -27,6 +27,7 @@ SECRET_KEY = '^+)=d2=x*z510sc#9oneg5nw!ku78a=-ax6=vr(f65376$ox$!'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+PROJECT_URL = "http://0.0.0.0:8000"
 
 SITE_ID=1
 # Application definition
@@ -101,6 +102,19 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+
+# MEDIA OVERWRITE
+MEDIA_URL = '%s/static/' % PROJECT_URL
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+# STATIC OVERWRITE
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(APPLICATION_ROOT, 'assets'),
+    os.path.join(BASE_DIR, 'uploads'),
+)
 
 
 # Password validation

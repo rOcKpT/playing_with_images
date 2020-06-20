@@ -3,10 +3,16 @@
 {% block content %}
 
     <div class="container">
+        <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+            <h1 class="header">Welcome To Imanager</h1>
+            <h4 class="light">Easily store your photos in your galleries.</h4>
+            <h5 class="light"> To access all the functionality is necessary to register.</h5>
+        </div>
         <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-            <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login
+            </button>
         </form>
         Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!
     </div>

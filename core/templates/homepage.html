@@ -2,22 +2,29 @@
 {% load i18n %}
 
 {% block content %}
-    <h2>Your Galleries</h2>
-    <ul>
-        {% for o_gal in owned %}
-            <li><a href="#">{{o_gal.title}}</a></li>
-        {% empty %}
-            <li>{% trans "No galleries created" %}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>Gallery Area</h1>
+        <h3>Your Galleries
+            <a class="btn-floating waves-effect waves-light red" href="{% url "core:gallery_creation" %}"><i
+                    class="material-icons">add</i></a></h3>
+        <div class="collection">
+
+            {% for o_gal in owned %}
+                <a href="{{ o_gal.get_absolute_url }}" class="collection-item">{{ o_gal.title }}</a>
+            {% empty %}
+                <a href="#" class="collection-item active">{% trans "No galleries created" %}</a>
+            {% endfor %}
+        </div>
 
 
-    <h2>Shared Galleries</h2>
-    <ul>
-        {% for s_gal in shared %}
-            <li><a href="#">{s_gal.title}</a></li>
-        {% empty %}
-            <li>{% trans "No galleries shared with you" %}</li>
-        {% endfor %}
-    </ul>
+
+        <h3>Shared Galleries</h3>
+        <div class="collection">
+            {% for s_gal in shared %}
+                <a href="{{ s_gal.get_absolute_url }}" class="collection-item">{{ s_gal.title }}</a>
+            {% empty %}
+                <a href="#" class="collection-item active">{% trans "No galleries shared with you" %}</a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

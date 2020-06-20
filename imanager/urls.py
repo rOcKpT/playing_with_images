@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.conf.urls import include, url
-from django.conf.urls.i18n import i18n_patterns
+
+# from core.views import UserAutocomplete
 
 """imanager URL Configuration
 
@@ -22,8 +22,14 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     path('', include('accounts.urls')),
     path('', include('core.urls')),
+    # url(
+    #     r'^user-autocomplete/$',
+    #     UserAutocomplete.as_view(),
+    #     name='user-autocomplete',
+    # ),
 ]
 
 # urlpatterns += i18n_patterns(

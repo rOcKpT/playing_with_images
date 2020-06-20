@@ -1,0 +1,44 @@
+{% extends "header.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="center">{{ object.title }} <a class="btn-floating waves-effect waves-light red"
+                                                 href="{% url "core:gallery_edit" object.id %}"><i
+                class="material-icons">edit</i></a><a class="btn-floating waves-effect waves-light red"
+                                                      style="margin-left: 10px"
+                                                      href="{% url "core:gallery_delete" object.id %}"><i
+                class="material-icons">delete</i></a></h1>
+        <h3>{% trans "Description" %}</h3>
+        <p>{% if object.description %}{{ object.description }}{% else %}
+            {% trans "No description available, edit your gallery to add a description" %}{% endif %}</p>
+    </div>
+    <div class="container">
+        <h3>{% trans "Photos" %} <a class="btn-floating waves-effect waves-light red"
+                                    href="{% url "core:photo_creation" object.id %}"><i
+                class="material-icons">add</i></a></h3>
+
+
+        <div class="row">
+            {% for img in object.get_photos %}
+                <div class="col s12 m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="{{ img.image.url }}"><img src="{{ img.get_thumbnail_url }}" width="300px"></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"
+                               style="position: absolute; right: 80px; bottom: -20px;"
+                               href="{% url "core:photo_edit" object.id img.id %}"><i
+                                    class="material-icons">edit</i></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"
+                               href="{% url "core:photo_delete" object.id img.id %}"><i
+                                    class="material-icons">delete</i></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ img.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
