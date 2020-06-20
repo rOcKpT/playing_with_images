@@ -1,0 +1,27 @@
+<form method="post">
+    {% csrf_token %}
+{{ form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ form.title.errors }}
+    <label for="{{ form.title.id_for_label }}">Email subject:</label>
+    {{ form.title }}
+</div>
+<div class="fieldWrapper">
+    {{ form.description.errors }}
+    <label for="{{ form.description.id_for_label }}">Your message:</label>
+    {{ form.description }}
+</div>
+<div class="fieldWrapper">
+    {{ form.shared_with.errors }}
+    <label for="{{ form.shared_with.id_for_label }}">CC yourself?</label>
+    {% for sharable_user in form.shared_with.field.choices.queryset %}
+        <p>
+            <label>
+                <input  value="{{ sharable_user.id }}" type="checkbox" {% if sharable_user in form.shared_with.inital %} checked="checked"{% endif %}>
+                <span>{{ sharable_user.username }}</span>
+            </label>
+        </p>
+    {% endfor %}
+</div>
+<button type="submit">Save</button>
+</form>

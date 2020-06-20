@@ -1,0 +1,38 @@
+{% load static i18n %}
+
+<head>   <!-- Prism CSS -->
+    <script src="jquery-3.5.1.min.js"></script>
+    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}"/>
+
+</head>
+<body>
+<nav style="background-color: #1976d2 ">
+    <div class="nav-wrapper">
+        <a href="{% url "core:homepage" %}" class="brand-logo" style="padding-left: 50px">Imanager</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {% if user.is_anonymous %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {% else %}
+                <li class="">{% trans "Welcome" %} {{ user.username }}</li>
+                <li><a href="/logout">Logout</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% include "messaging.html" %}
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+
+<!-- Prism JS -->
+<script src="{% static "tinymce/js/prism.js" %}"></script>

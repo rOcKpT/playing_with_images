@@ -1,0 +1,17 @@
+{% extends "header.html" %}
+{% load i18n %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="center">Do you really want to delete the Gallery '{{ object.title }}'???</h1>
+        <div class="container center">
+            <button type="submit" style="background-color:red; color:white" class="btn btn-outline-info"
+                    type="submit">{% trans "Yes" %}</button>
+            <button style="background-color:green; color:white" class="btn btn-outline-info"
+                    type="submit">{% trans "Cancel" %}</button>
+
+        </div>
+    </form>
+{% endblock %}
+s
