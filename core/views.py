@@ -1,16 +1,11 @@
-from dal import autocomplete
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from photologue.models import Photo
 
-from core.forms import PhotoForm, GalleryForm, User
+from core.forms import PhotoForm, GalleryForm
 from core.models import ImanagerGallery
 
 
