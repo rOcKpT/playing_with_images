@@ -1,10 +1,7 @@
-from dal import autocomplete
-from django import forms
 from django.contrib.admin.widgets import *
 from photologue.models import Photo
 
 from .models import *
-
 
 
 class GalleryForm(forms.ModelForm):
