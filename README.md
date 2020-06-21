@@ -1,4 +1,4 @@
- Imanager - Image manager
+##Imanager - Image manager
 Welcome to the Imanager, to setup this project you need to do following steps.
 ### Docker
 Inside the root of the project do the following commands.
